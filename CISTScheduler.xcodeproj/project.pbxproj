@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3E2AA42176A8BE9006296E2 /* ScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3E2AA41176A8BE9006296E2 /* ScheduleCell.xib */; };
 		C3E40201176A83B500332940 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E40200176A83B500332940 /* UIKit.framework */; };
 		C3E40203176A83B500332940 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E40202176A83B500332940 /* Foundation.framework */; };
 		C3E40205176A83B500332940 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E40204176A83B500332940 /* CoreGraphics.framework */; };
@@ -17,9 +18,11 @@
 		C3E40215176A83B500332940 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E40214176A83B500332940 /* Default@2x.png */; };
 		C3E40217176A83B500332940 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E40216176A83B500332940 /* Default-568h@2x.png */; };
 		C3E4021F176A854100332940 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4021E176A854100332940 /* ScheduleViewController.m */; };
+		C3E40224176A8A2B00332940 /* ScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E40223176A8A2B00332940 /* ScheduleCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C3E2AA41176A8BE9006296E2 /* ScheduleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleCell.xib; sourceTree = "<group>"; };
 		C3E401FC176A83B500332940 /* CISTScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CISTScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E40200176A83B500332940 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C3E40202176A83B500332940 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -35,6 +38,8 @@
 		C3E40216176A83B500332940 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C3E4021D176A854100332940 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
 		C3E4021E176A854100332940 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
+		C3E40222176A8A2B00332940 /* ScheduleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCell.h; sourceTree = "<group>"; };
+		C3E40223176A8A2B00332940 /* ScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +91,9 @@
 				C3E40210176A83B500332940 /* AppDelegate.m */,
 				C3E4021D176A854100332940 /* ScheduleViewController.h */,
 				C3E4021E176A854100332940 /* ScheduleViewController.m */,
+				C3E40222176A8A2B00332940 /* ScheduleCell.h */,
+				C3E40223176A8A2B00332940 /* ScheduleCell.m */,
+				C3E2AA41176A8BE9006296E2 /* ScheduleCell.xib */,
 			);
 			path = CISTScheduler;
 			sourceTree = "<group>";
@@ -160,6 +168,7 @@
 				C3E40213176A83B500332940 /* Default.png in Resources */,
 				C3E40215176A83B500332940 /* Default@2x.png in Resources */,
 				C3E40217176A83B500332940 /* Default-568h@2x.png in Resources */,
+				C3E2AA42176A8BE9006296E2 /* ScheduleCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +182,7 @@
 				C3E4020D176A83B500332940 /* main.m in Sources */,
 				C3E40211176A83B500332940 /* AppDelegate.m in Sources */,
 				C3E4021F176A854100332940 /* ScheduleViewController.m in Sources */,
+				C3E40224176A8A2B00332940 /* ScheduleCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +291,7 @@
 				C3E4021C176A83B500332940 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

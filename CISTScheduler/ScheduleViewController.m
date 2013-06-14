@@ -7,6 +7,7 @@
 //
 
 #import "ScheduleViewController.h"
+#import "ScheduleCell.h"
 
 @interface ScheduleViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -26,6 +27,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"ScheduleCell"
+                                               bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ScheduleCellId"];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -54,14 +58,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"ScheduleCellId";
+    ScheduleCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[ScheduleCell alloc] init];
     }
     
-    [[cell textLabel] setText:[NSString stringWithFormat:@"Row %d", indexPath.row]];
+    cell.classNameLabel.text = @"OOP";
+    cell.classNumberLabel.text = @"258";
+    cell.classTimeLabel.text = @"11:15";
     
     return cell;
 }
