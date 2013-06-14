@@ -8,8 +8,12 @@
 
 #import "ScheduleViewController.h"
 #import "ScheduleCell.h"
+#import "ScheduleDataSource.h"
 
-@interface ScheduleViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@interface ScheduleViewController () <UITableViewDelegate>
+
+@property (nonatomic, retain) ScheduleDataSource *dataSource;
 
 @end
 
@@ -20,6 +24,8 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        _dataSource = [[ScheduleDataSource alloc] initWithGroupIndex:@"2664907"];
+        self.tableView.dataSource = _dataSource;
     }
     return self;
 }
@@ -45,32 +51,6 @@
 }
 
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 5;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"ScheduleCellId";
-    ScheduleCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (!cell) {
-        cell = [[ScheduleCell alloc] init];
-    }
-    
-    cell.classNameLabel.text = @"OOP";
-    cell.classNumberLabel.text = @"258";
-    cell.classTimeLabel.text = @"11:15";
-    
-    return cell;
-}
 
 /*
 // Override to support conditional editing of the table view.

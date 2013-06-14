@@ -21,7 +21,16 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
-    self.window.rootViewController = [[[ScheduleViewController alloc] init] autorelease];
+    
+    ScheduleViewController *scheduleVC = [[ScheduleViewController alloc] init];
+    [scheduleVC setTitle:@"Schedule"];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:scheduleVC];
+
+    self.window.rootViewController = navController;
+    
+    [scheduleVC release];
+    [navController release];
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
