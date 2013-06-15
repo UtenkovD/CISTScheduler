@@ -14,6 +14,10 @@
 @property (nonatomic, retain) NSDate *startDate;
 @property (nonatomic, retain) NSDate *endDate;
 
+@property (retain, nonatomic) IBOutlet UIButton *groupButton;
+@property (retain, nonatomic) IBOutlet UIButton *startDateButton;
+@property (retain, nonatomic) IBOutlet UIButton *endDateButton;
+
 - (IBAction)groupPickButtonPressed:(id)sender;
 - (IBAction)startDatePickButtonPressed:(id)sender;
 - (IBAction)endDatePickButtonPressed:(id)sender;
