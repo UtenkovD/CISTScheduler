@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C30050C0176D303600829C03 /* GroupPickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C30050BF176D303600829C03 /* GroupPickerDataSource.m */; };
+		C30050C9176D320D00829C03 /* АКТ.txt in Resources */ = {isa = PBXBuildFile; fileRef = C30050C2176D320D00829C03 /* АКТ.txt */; };
+		C30050CA176D320D00829C03 /* КИУ.txt in Resources */ = {isa = PBXBuildFile; fileRef = C30050C3176D320D00829C03 /* КИУ.txt */; };
+		C30050CB176D320D00829C03 /* КН.txt in Resources */ = {isa = PBXBuildFile; fileRef = C30050C4176D320D00829C03 /* КН.txt */; };
+		C30050CC176D320D00829C03 /* ПММ.txt in Resources */ = {isa = PBXBuildFile; fileRef = C30050C5176D320D00829C03 /* ПММ.txt */; };
+		C30050CD176D320D00829C03 /* РТ.txt in Resources */ = {isa = PBXBuildFile; fileRef = C30050C6176D320D00829C03 /* РТ.txt */; };
+		C30050CE176D320D00829C03 /* ТКВТ.txt in Resources */ = {isa = PBXBuildFile; fileRef = C30050C7176D320D00829C03 /* ТКВТ.txt */; };
+		C30050CF176D320D00829C03 /* ЭТ.txt in Resources */ = {isa = PBXBuildFile; fileRef = C30050C8176D320D00829C03 /* ЭТ.txt */; };
 		C301AA89176BE647009F0109 /* PickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C301AA87176BE647009F0109 /* PickViewController.m */; };
 		C301AA8A176BE647009F0109 /* PickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C301AA88176BE647009F0109 /* PickViewController.xib */; };
 		C36A8721176D1B6000EDA0EE /* KN-09-4.csv in Resources */ = {isa = PBXBuildFile; fileRef = C36A8720176D1B6000EDA0EE /* KN-09-4.csv */; };
@@ -26,6 +34,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C30050BE176D303600829C03 /* GroupPickerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupPickerDataSource.h; sourceTree = "<group>"; };
+		C30050BF176D303600829C03 /* GroupPickerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupPickerDataSource.m; sourceTree = "<group>"; };
+		C30050C2176D320D00829C03 /* АКТ.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "АКТ.txt"; sourceTree = "<group>"; };
+		C30050C3176D320D00829C03 /* КИУ.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "КИУ.txt"; sourceTree = "<group>"; };
+		C30050C4176D320D00829C03 /* КН.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "КН.txt"; sourceTree = "<group>"; };
+		C30050C5176D320D00829C03 /* ПММ.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ПММ.txt"; sourceTree = "<group>"; };
+		C30050C6176D320D00829C03 /* РТ.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "РТ.txt"; sourceTree = "<group>"; };
+		C30050C7176D320D00829C03 /* ТКВТ.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ТКВТ.txt"; sourceTree = "<group>"; };
+		C30050C8176D320D00829C03 /* ЭТ.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ЭТ.txt"; sourceTree = "<group>"; };
 		C301AA86176BE647009F0109 /* PickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickViewController.h; sourceTree = "<group>"; };
 		C301AA87176BE647009F0109 /* PickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickViewController.m; sourceTree = "<group>"; };
 		C301AA88176BE647009F0109 /* PickViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickViewController.xib; sourceTree = "<group>"; };
@@ -66,6 +83,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C30050C1176D31C500829C03 /* Groups keys */ = {
+			isa = PBXGroup;
+			children = (
+				C30050C2176D320D00829C03 /* АКТ.txt */,
+				C30050C3176D320D00829C03 /* КИУ.txt */,
+				C30050C4176D320D00829C03 /* КН.txt */,
+				C30050C5176D320D00829C03 /* ПММ.txt */,
+				C30050C6176D320D00829C03 /* РТ.txt */,
+				C30050C7176D320D00829C03 /* ТКВТ.txt */,
+				C30050C8176D320D00829C03 /* ЭТ.txt */,
+			);
+			name = "Groups keys";
+			sourceTree = "<group>";
+		};
 		C301AA85176BE618009F0109 /* ScheduleViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +148,8 @@
 				C301AA86176BE647009F0109 /* PickViewController.h */,
 				C301AA87176BE647009F0109 /* PickViewController.m */,
 				C301AA88176BE647009F0109 /* PickViewController.xib */,
+				C30050BE176D303600829C03 /* GroupPickerDataSource.h */,
+				C30050BF176D303600829C03 /* GroupPickerDataSource.m */,
 			);
 			path = CISTScheduler;
 			sourceTree = "<group>";
@@ -124,6 +157,7 @@
 		C3E40207176A83B500332940 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C30050C1176D31C500829C03 /* Groups keys */,
 				C36A8720176D1B6000EDA0EE /* KN-09-4.csv */,
 				C3E40208176A83B500332940 /* CISTScheduler-Info.plist */,
 				C3E40209176A83B500332940 /* InfoPlist.strings */,
@@ -195,6 +229,13 @@
 				C3E2AA42176A8BE9006296E2 /* ScheduleCell.xib in Resources */,
 				C301AA8A176BE647009F0109 /* PickViewController.xib in Resources */,
 				C36A8721176D1B6000EDA0EE /* KN-09-4.csv in Resources */,
+				C30050C9176D320D00829C03 /* АКТ.txt in Resources */,
+				C30050CA176D320D00829C03 /* КИУ.txt in Resources */,
+				C30050CB176D320D00829C03 /* КН.txt in Resources */,
+				C30050CC176D320D00829C03 /* ПММ.txt in Resources */,
+				C30050CD176D320D00829C03 /* РТ.txt in Resources */,
+				C30050CE176D320D00829C03 /* ТКВТ.txt in Resources */,
+				C30050CF176D320D00829C03 /* ЭТ.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +252,7 @@
 				C3E40224176A8A2B00332940 /* ScheduleCell.m in Sources */,
 				FA253D26176B342400FD2F9F /* ScheduleDataSource.m in Sources */,
 				C301AA89176BE647009F0109 /* PickViewController.m in Sources */,
+				C30050C0176D303600829C03 /* GroupPickerDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
