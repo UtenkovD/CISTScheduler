@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C301AA89176BE647009F0109 /* PickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C301AA87176BE647009F0109 /* PickViewController.m */; };
+		C301AA8A176BE647009F0109 /* PickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C301AA88176BE647009F0109 /* PickViewController.xib */; };
 		C3E2AA42176A8BE9006296E2 /* ScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3E2AA41176A8BE9006296E2 /* ScheduleCell.xib */; };
 		C3E40201176A83B500332940 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E40200176A83B500332940 /* UIKit.framework */; };
 		C3E40203176A83B500332940 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E40202176A83B500332940 /* Foundation.framework */; };
@@ -23,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C301AA86176BE647009F0109 /* PickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickViewController.h; sourceTree = "<group>"; };
+		C301AA87176BE647009F0109 /* PickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickViewController.m; sourceTree = "<group>"; };
+		C301AA88176BE647009F0109 /* PickViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickViewController.xib; sourceTree = "<group>"; };
 		C3E2AA41176A8BE9006296E2 /* ScheduleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleCell.xib; sourceTree = "<group>"; };
 		C3E401FC176A83B500332940 /* CISTScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CISTScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E40200176A83B500332940 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -107,6 +112,9 @@
 				C3E4020F176A83B500332940 /* AppDelegate.h */,
 				C3E40210176A83B500332940 /* AppDelegate.m */,
 				C301AA85176BE618009F0109 /* ScheduleViewController */,
+				C301AA86176BE647009F0109 /* PickViewController.h */,
+				C301AA87176BE647009F0109 /* PickViewController.m */,
+				C301AA88176BE647009F0109 /* PickViewController.xib */,
 			);
 			path = CISTScheduler;
 			sourceTree = "<group>";
@@ -182,6 +190,7 @@
 				C3E40215176A83B500332940 /* Default@2x.png in Resources */,
 				C3E40217176A83B500332940 /* Default-568h@2x.png in Resources */,
 				C3E2AA42176A8BE9006296E2 /* ScheduleCell.xib in Resources */,
+				C301AA8A176BE647009F0109 /* PickViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +206,7 @@
 				C3E4021F176A854100332940 /* ScheduleViewController.m in Sources */,
 				C3E40224176A8A2B00332940 /* ScheduleCell.m in Sources */,
 				FA253D26176B342400FD2F9F /* ScheduleDataSource.m in Sources */,
+				C301AA89176BE647009F0109 /* PickViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
