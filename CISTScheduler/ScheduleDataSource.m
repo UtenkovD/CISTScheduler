@@ -36,8 +36,8 @@
         _sections = [[NSMutableArray alloc] init];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"dd.MM.yyyy"];
-        _startDate = startDate ? startDate : [[dateFormatter dateFromString:@"01.02.2013"] retain];
-        _endDate = endDate ? endDate : [[dateFormatter dateFromString:@"30.06.2013"] retain];
+        _startDate = startDate ? [startDate retain] : [[dateFormatter dateFromString:@"01.02.2013"] retain];
+        _endDate = endDate ? [endDate retain] : [[dateFormatter dateFromString:@"30.06.2013"] retain];
         [dateFormatter release];
     }
     return self;
@@ -111,10 +111,16 @@
         NSDate *time = [dateFormatter dateFromString:timeString];
         NSDate *combinedDate = [self combineDate:date time:time];
         
-        NSMutableDictionary *convertedClass = [NSMutableDictionary dictionary];
-        [convertedClass setObject:[class objectForKey:@"Тема"] forKey:@"ClassName"];
-        [convertedClass setObject:combinedDate forKey:@"ClassTime"];
-        [convertedClasses addObject:convertedClass];
+        NSArray *parsedTheme = [self parseTheme:[class objectForKey:@"Тема"]];
+        
+        for (NSDictionary *class in parsedTheme) {
+            NSMutableDictionary *convertedClass = [NSMutableDictionary dictionary];
+            [convertedClass setObject:[class objectForKey:@"ClassName"] forKey:@"ClassName"];
+            [convertedClass setObject:[class objectForKey:@"ClassType"] forKey:@"ClassType"];
+            [convertedClass setObject:[class objectForKey:@"ClassAuditoryNumber"] forKey:@"ClassAuditoryNumber"];
+            [convertedClass setObject:combinedDate forKey:@"ClassTime"];
+            [convertedClasses addObject:convertedClass];
+        }
         
         // Add date of class to section keys
         [sectionKeys addObject:date];
@@ -156,7 +162,11 @@
         NSMutableArray *sectionArray = [sections objectForKey:key];
         [sectionArray sortUsingDescriptors:@[ [NSSortDescriptor sortDescriptorWithKey:@"ClassTime"
                                                                      ascending:YES
-                                                                      selector:@selector(compare:)] ]];
+                                                                      selector:@selector(compare:)],
+                                             [NSSortDescriptor sortDescriptorWithKey:@"ClassAuditoryNumber"
+                                                                           ascending:YES
+                                                                            selector:@selector(compare:)]
+                                            ]];
         [self.sections addObject:sectionArray];
     }
     
@@ -193,6 +203,47 @@
     [components3 release];
     [gregorianCalendar release];
     return combinedDate;
+}
+         
+- (NSArray *)parseTheme:(NSString *)theme {
+    if ([theme hasPrefix:@"*"]) {
+     return [self parseAlternatives:theme];
+    } else {
+     return [self parseSingleClass:theme];
+    }
+}
+
+- (NSArray *)parseSingleClass:(NSString *)theme {
+    NSArray *themeParts = [theme componentsSeparatedByString:@" "];
+    return @[
+             @{
+                 @"ClassName"           : [themeParts objectAtIndex:0],
+                 @"ClassType"           : [themeParts objectAtIndex:1],
+                 @"ClassAuditoryNumber" : [themeParts objectAtIndex:2]
+             }
+            ];
+}
+
+- (NSArray *)parseAlternatives:(NSString *)theme {
+    NSArray *themeParts = [theme componentsSeparatedByString:@"; "];
+    
+    NSMutableArray *alternatives = [NSMutableArray array];
+    
+    for (NSString *part in themeParts) {
+        NSArray *alternativeParts = [part componentsSeparatedByString:@" "];
+        // Abbreviation with space
+        NSUInteger index = alternativeParts.count-1;
+        if ( ![[alternativeParts objectAtIndex:index] hasPrefix:@"*"]) {
+            index--;
+        }
+        [alternatives addObject:@{
+                                 @"ClassName"           : [alternativeParts objectAtIndex:index],
+                                 @"ClassAuditoryNumber" : [alternativeParts objectAtIndex:index-1],
+                                 @"ClassType"           : [alternativeParts objectAtIndex:index-2]
+                                }];
+    }
+    NSLog(@"%@", theme);
+    return [NSArray arrayWithArray:alternatives];
 }
 
 - (NSArray *)parse:(NSString *)csvString {
@@ -254,16 +305,15 @@
     if (!cell) {
         cell = [[[ScheduleCell alloc] init] autorelease];
     }
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm"];
     
     NSDictionary *class = [[self.sections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
     cell.classNameLabel.text = [class objectForKey:@"ClassName"];
+    cell.classNumberLabel.text = [class objectForKey:@"ClassAuditoryNumber"];
+    cell.classTimeLabel.text = [formatter stringFromDate:[class objectForKey:@"ClassTime"]];
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"HH:mm"];
-    
-    cell.classNumberLabel.text = [formatter stringFromDate:[class objectForKey:@"ClassTime"]];
-    //cell.classTimeLabel.text = [class objectForKey:@"Время начала"];
     [formatter release];
     return cell;
 }
