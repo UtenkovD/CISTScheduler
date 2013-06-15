@@ -61,7 +61,15 @@
     
     if (error) {
         NSLog(@"Error occured: %@", [error localizedDescription]);
-        return nil;
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:[error localizedDescription]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+        NSString *pathToCSV = [[NSBundle mainBundle] pathForResource:@"KN-09-4" ofType:@"csv"];
+        csvString  = [NSString stringWithContentsOfFile:pathToCSV encoding:NSUTF8StringEncoding error:&error];
     }
     
     NSData *utfData = [csvString dataUsingEncoding:NSUTF8StringEncoding];
@@ -91,6 +99,10 @@
     NSArray *rows = [self getClassesForGroup:[self groupIndex]
                                    startDate:[self startDate]
                                      endDate:[self endDate]];
+    
+    if (!rows) {
+        return;
+    }
     NSMutableArray *convertedClasses = [NSMutableArray array];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -233,16 +245,21 @@
         NSArray *alternativeParts = [part componentsSeparatedByString:@" "];
         // Abbreviation with space
         NSUInteger index = alternativeParts.count-1;
+        NSUInteger endIndex = 0;
         if ( ![[alternativeParts objectAtIndex:index] hasPrefix:@"*"]) {
             index--;
+            endIndex = [[alternativeParts objectAtIndex:index] length]-1;
+        } else {
+           NSRange range = [[alternativeParts objectAtIndex:index] rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"("]];
+            endIndex = range.location-1;
         }
+        NSString *className = [[alternativeParts objectAtIndex:index] substringWithRange:NSMakeRange(1, endIndex)];
         [alternatives addObject:@{
-                                 @"ClassName"           : [alternativeParts objectAtIndex:index],
+                                 @"ClassName"           : className,
                                  @"ClassAuditoryNumber" : [alternativeParts objectAtIndex:index-1],
                                  @"ClassType"           : [alternativeParts objectAtIndex:index-2]
                                 }];
     }
-    NSLog(@"%@", theme);
     return [NSArray arrayWithArray:alternatives];
 }
 
@@ -311,7 +328,7 @@
     NSDictionary *class = [[self.sections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
     cell.classNameLabel.text = [class objectForKey:@"ClassName"];
-    cell.classNumberLabel.text = [class objectForKey:@"ClassAuditoryNumber"];
+    cell.classNumberLabel.text = [NSString stringWithFormat:@"ауд. %@", [class objectForKey:@"ClassAuditoryNumber"]];
     cell.classTimeLabel.text = [formatter stringFromDate:[class objectForKey:@"ClassTime"]];
     
     [formatter release];

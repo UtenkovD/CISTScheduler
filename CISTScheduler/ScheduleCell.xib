@@ -2,9 +2,9 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1552</int>
-		<string key="IBDocument.SystemVersion">12E55</string>
+		<string key="IBDocument.SystemVersion">12D78</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1187.39</string>
+		<string key="IBDocument.AppKitVersion">1187.37</string>
 		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -77,7 +77,7 @@
 							<object class="IBUILabel" id="717976492">
 								<reference key="NSNextResponder" ref="583295473"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{74, 10}, {147, 24}}</string>
+								<string key="NSFrame">{{85, 10}, {82, 24}}</string>
 								<reference key="NSSuperview" ref="583295473"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="381067338"/>
@@ -98,7 +98,7 @@
 							<object class="IBUILabel" id="381067338">
 								<reference key="NSNextResponder" ref="583295473"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{235, 10}, {56, 24}}</string>
+								<string key="NSFrame">{{174, 10}, {101, 24}}</string>
 								<reference key="NSSuperview" ref="583295473"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
@@ -108,11 +108,10 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">258аз</string>
+								<string key="IBUIText">ауд. 258аз</string>
 								<reference key="IBUITextColor" ref="218918104"/>
 								<reference key="IBUIHighlightedColor" ref="65528639"/>
 								<int key="IBUIBaselineAdjustment">0</int>
-								<int key="IBUILineBreakMode">5</int>
 								<reference key="IBUIFontDescription" ref="91922319"/>
 								<reference key="IBUIFont" ref="754188752"/>
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
@@ -194,8 +193,8 @@
 						<reference key="object" ref="150005556"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="430868418"/>
-							<reference ref="717976492"/>
 							<reference ref="381067338"/>
+							<reference ref="717976492"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
