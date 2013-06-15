@@ -7,6 +7,7 @@
 //
 
 #import "PickViewController.h"
+#import "ScheduleViewController.h"
 
 @interface PickViewController ()
 
@@ -152,7 +153,20 @@
 }
 
 - (IBAction)scheduleButtonPressed:(id)sender {
+    NSDate *startDate = [self startDate];
+    if (startDate == nil) {
+        startDate = [[self dateFormatter] dateFromString:@"01.02.2013"];
+    }
+    NSDate *endDate = [self endDate];
+    if (endDate == nil) {
+        endDate = [[self dateFormatter] dateFromString:@"30.06.2013"];
+    }
     
+    ScheduleViewController *scheduleVC = [[ScheduleViewController alloc] init];
+    [scheduleVC setStartDate:startDate];
+    [scheduleVC setEndDate:endDate];
+    [[self navigationController] pushViewController:scheduleVC animated:YES];
+    [scheduleVC release];
 }
 
 - (void)viewDidUnload {

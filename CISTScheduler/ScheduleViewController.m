@@ -19,13 +19,25 @@
 
 @implementation ScheduleViewController
 
+- (void)dealloc {
+    [_startDate release];
+    [_endDate release];
+    [_dataSource release];
+    [super dealloc];
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        _dataSource = [[ScheduleDataSource alloc] initWithGroupIndex:@"2664907"];
-        self.tableView.dataSource = _dataSource;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"dd.MM.yyyy"];
+        _startDate = [[dateFormatter dateFromString:@"01.02.2013"] retain];
+        _endDate = [[dateFormatter dateFromString:@"30.06.2013"] retain];
+        [dateFormatter release];
+        
+        
     }
     return self;
 }
@@ -36,7 +48,13 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"ScheduleCell"
                                                bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ScheduleCellId"];
-
+    ScheduleDataSource *dataSource = [[ScheduleDataSource alloc] initWithGroupIndex:@"2664907"
+                                                             startDate:[self startDate]
+                                                               endDate:[self endDate]];
+    [self setDataSource:dataSource];
+    [dataSource release];
+    [[self dataSource] fillSections];
+    self.tableView.dataSource = self.dataSource;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
 }

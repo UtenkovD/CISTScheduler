@@ -10,4 +10,7 @@
 
 @interface ScheduleViewController : UITableViewController
 
+@property (nonatomic, retain) NSDate *startDate;
+@property (nonatomic, retain) NSDate *endDate;
+
 @end

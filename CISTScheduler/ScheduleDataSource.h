@@ -11,9 +11,13 @@
 @interface ScheduleDataSource : NSObject <UITableViewDataSource>
 
 @property (nonatomic, copy) NSString *groupIndex;
+@property (nonatomic, retain) NSDate *startDate;
+@property (nonatomic, retain) NSDate *endDate;
 
-- (id)initWithGroupIndex:(NSString *)groupIndex;
+- (id)initWithGroupIndex:(NSString *)groupIndex
+               startDate:(NSDate *)startDate
+                 endDate:(NSDate *)endDate;
 
-- (NSArray *)getClassesForGroup:(NSString *)groupIndex;
+- (void)fillSections;
 
 @end

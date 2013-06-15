@@ -22,25 +22,47 @@
 - (void)dealloc {
     [_groupIndex release];
     [_sections release];
+    [_startDate release];
+    [_endDate release];
     [super dealloc];
 }
 
-- (id)initWithGroupIndex:(NSString *)groupIndex {
+- (id)initWithGroupIndex:(NSString *)groupIndex
+               startDate:(NSDate *)startDate
+                 endDate:(NSDate *)endDate
+{
     if (self = [super init]) {
         _groupIndex = [groupIndex copy];
         _sections = [[NSMutableArray alloc] init];
-        [self fillSections];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"dd.MM.yyyy"];
+        _startDate = startDate ? startDate : [[dateFormatter dateFromString:@"01.02.2013"] retain];
+        _endDate = endDate ? endDate : [[dateFormatter dateFromString:@"30.06.2013"] retain];
+        [dateFormatter release];
     }
     return self;
 }
 
-- (NSArray *)getClassesForGroup:(NSString *)groupIndex {
-    NSString *urlString = [NSString stringWithFormat:@"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_GNR_RASP.GEN_GROUP_POTOK_RASP?ATypeDoc=3&Aid_group=%@&Aid_potok=0&ADateStart=01.02.2013&ADateEnd=30.07.2013&AMultiWorkSheet=0", groupIndex];
+- (NSArray *)getClassesForGroup:(NSString *)groupIndex
+                      startDate:(NSDate *)startDate
+                        endDate:(NSDate *)endDate
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd.MM.yyyy"];
+    NSString *startDateString = [dateFormatter stringFromDate:startDate];
+    NSString *endDateString = [dateFormatter stringFromDate:endDate];
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_GNR_RASP.GEN_GROUP_POTOK_RASP?ATypeDoc=3&Aid_group=%@&Aid_potok=0&ADateStart=%@&ADateEnd=%@&AMultiWorkSheet=0", groupIndex, startDateString, endDateString];
     
     NSError *error = nil;
     NSString *csvString = [NSString stringWithContentsOfURL:[NSURL URLWithString:urlString]
                                                    encoding:NSWindowsCP1251StringEncoding
                                                       error:&error];
+    
+    if (error) {
+        NSLog(@"Error occured: %@", [error localizedDescription]);
+        return nil;
+    }
     
     NSData *utfData = [csvString dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -66,8 +88,9 @@
 }
 
 - (void)fillSections {
-    
-    NSArray *rows = [self getClassesForGroup:_groupIndex];
+    NSArray *rows = [self getClassesForGroup:[self groupIndex]
+                                   startDate:[self startDate]
+                                     endDate:[self endDate]];
     NSMutableArray *convertedClasses = [NSMutableArray array];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
