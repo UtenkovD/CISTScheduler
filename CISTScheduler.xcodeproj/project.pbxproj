@@ -19,9 +19,6 @@
 		C3E40217176A83B500332940 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E40216176A83B500332940 /* Default-568h@2x.png */; };
 		C3E4021F176A854100332940 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4021E176A854100332940 /* ScheduleViewController.m */; };
 		C3E40224176A8A2B00332940 /* ScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E40223176A8A2B00332940 /* ScheduleCell.m */; };
-		FA014737176B423E008A1899 /* CSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FA014736176B423E008A1899 /* CSVParser.m */; };
-		FA01473A176B4FD7008A1899 /* NSString+CSVParsing.m in Sources */ = {isa = PBXBuildFile; fileRef = FA014739176B4FD7008A1899 /* NSString+CSVParsing.m */; };
-		FA253D23176B2B1000FD2F9F /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FA253D22176B2B1000FD2F9F /* CHCSVParser.m */; };
 		FA253D26176B342400FD2F9F /* ScheduleDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FA253D25176B342400FD2F9F /* ScheduleDataSource.m */; };
 /* End PBXBuildFile section */
 
@@ -44,12 +41,6 @@
 		C3E4021E176A854100332940 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
 		C3E40222176A8A2B00332940 /* ScheduleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCell.h; sourceTree = "<group>"; };
 		C3E40223176A8A2B00332940 /* ScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCell.m; sourceTree = "<group>"; };
-		FA014735176B423E008A1899 /* CSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSVParser.h; sourceTree = "<group>"; };
-		FA014736176B423E008A1899 /* CSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVParser.m; sourceTree = "<group>"; };
-		FA014738176B4FD7008A1899 /* NSString+CSVParsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CSVParsing.h"; sourceTree = "<group>"; };
-		FA014739176B4FD7008A1899 /* NSString+CSVParsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CSVParsing.m"; sourceTree = "<group>"; };
-		FA253D21176B2B1000FD2F9F /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
-		FA253D22176B2B1000FD2F9F /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
 		FA253D24176B342400FD2F9F /* ScheduleDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleDataSource.h; sourceTree = "<group>"; };
 		FA253D25176B342400FD2F9F /* ScheduleDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleDataSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,6 +59,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C301AA85176BE618009F0109 /* ScheduleViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C3E4021D176A854100332940 /* ScheduleViewController.h */,
+				C3E4021E176A854100332940 /* ScheduleViewController.m */,
+				C3E40222176A8A2B00332940 /* ScheduleCell.h */,
+				C3E40223176A8A2B00332940 /* ScheduleCell.m */,
+				C3E2AA41176A8BE9006296E2 /* ScheduleCell.xib */,
+				FA253D24176B342400FD2F9F /* ScheduleDataSource.h */,
+				FA253D25176B342400FD2F9F /* ScheduleDataSource.m */,
+			);
+			name = ScheduleViewController;
+			sourceTree = "<group>";
+		};
 		C3E401F1176A83B500332940 = {
 			isa = PBXGroup;
 			children = (
@@ -99,20 +104,9 @@
 		C3E40206176A83B500332940 /* CISTScheduler */ = {
 			isa = PBXGroup;
 			children = (
-				FA014735176B423E008A1899 /* CSVParser.h */,
-				FA014736176B423E008A1899 /* CSVParser.m */,
-				FA253D20176B2B1000FD2F9F /* CHCSVParser */,
 				C3E4020F176A83B500332940 /* AppDelegate.h */,
 				C3E40210176A83B500332940 /* AppDelegate.m */,
-				C3E4021D176A854100332940 /* ScheduleViewController.h */,
-				C3E4021E176A854100332940 /* ScheduleViewController.m */,
-				C3E40222176A8A2B00332940 /* ScheduleCell.h */,
-				C3E40223176A8A2B00332940 /* ScheduleCell.m */,
-				C3E2AA41176A8BE9006296E2 /* ScheduleCell.xib */,
-				FA253D24176B342400FD2F9F /* ScheduleDataSource.h */,
-				FA253D25176B342400FD2F9F /* ScheduleDataSource.m */,
-				FA014738176B4FD7008A1899 /* NSString+CSVParsing.h */,
-				FA014739176B4FD7008A1899 /* NSString+CSVParsing.m */,
+				C301AA85176BE618009F0109 /* ScheduleViewController */,
 			);
 			path = CISTScheduler;
 			sourceTree = "<group>";
@@ -130,15 +124,6 @@
 			);
 			name = "Supporting Files";
 			path = CISTScheduler;
-			sourceTree = "<group>";
-		};
-		FA253D20176B2B1000FD2F9F /* CHCSVParser */ = {
-			isa = PBXGroup;
-			children = (
-				FA253D21176B2B1000FD2F9F /* CHCSVParser.h */,
-				FA253D22176B2B1000FD2F9F /* CHCSVParser.m */,
-			);
-			path = CHCSVParser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,10 +196,7 @@
 				C3E40211176A83B500332940 /* AppDelegate.m in Sources */,
 				C3E4021F176A854100332940 /* ScheduleViewController.m in Sources */,
 				C3E40224176A8A2B00332940 /* ScheduleCell.m in Sources */,
-				FA253D23176B2B1000FD2F9F /* CHCSVParser.m in Sources */,
 				FA253D26176B342400FD2F9F /* ScheduleDataSource.m in Sources */,
-				FA014737176B423E008A1899 /* CSVParser.m in Sources */,
-				FA01473A176B4FD7008A1899 /* NSString+CSVParsing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

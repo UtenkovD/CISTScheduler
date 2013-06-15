@@ -7,35 +7,29 @@
 //
 
 #import "ScheduleDataSource.h"
-#import "NSString+CSVParsing.h"
 #import "ScheduleCell.h"
 
 #define a_0 @"2664907"
 
 @interface ScheduleDataSource () 
 
-@property (nonatomic, retain ) NSMutableArray *rows;
+@property (nonatomic, retain ) NSMutableArray *sections;
 
 @end
 
 @implementation ScheduleDataSource
 
 - (void)dealloc {
-    [_rows release];
     [_groupIndex release];
+    [_sections release];
     [super dealloc];
 }
 
 - (id)initWithGroupIndex:(NSString *)groupIndex {
     if (self = [super init]) {
         _groupIndex = [groupIndex copy];
-        _rows = [[NSMutableArray arrayWithArray:[self getClassesForGroup:_groupIndex]] retain];
-        
-        [self convertRows];
-        
-        [_rows sortUsingDescriptors:@[ [NSSortDescriptor sortDescriptorWithKey:@"ClassTime"
-                                                                     ascending:YES
-                                                                      selector:@selector(compare:)] ]];
+        _sections = [[NSMutableArray alloc] init];
+        [self fillSections];
     }
     return self;
 }
@@ -71,37 +65,87 @@
     return [NSArray arrayWithArray:classes];
 }
 
-- (void)convertRows {
+- (void)fillSections {
+    
+    NSArray *rows = [self getClassesForGroup:_groupIndex];
     NSMutableArray *convertedClasses = [NSMutableArray array];
-    for (NSDictionary *class in self.rows) {
-        NSMutableDictionary *convertedClass = [NSMutableDictionary dictionary];
-        [convertedClass setObject:[class objectForKey:@"Тема"] forKey:@"ClassName"];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setLocale:[NSLocale currentLocale]];
+    
+    NSMutableDictionary *sections = [NSMutableDictionary dictionary];
+    NSMutableArray *sectionKeys = [NSMutableArray array];
+    
+    // Remove redundant info from rows
+    for (NSDictionary *class in rows) {
         
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat: @"dd.mm.yyyy"]; //04.03.2013
+        // Transform two strings to single date with time
         NSString *dateString = [class objectForKey:@"Дата начала"];
+        [dateFormatter setDateFormat:@"dd.MM.yyyy"];
         NSDate *date = [dateFormatter dateFromString:dateString];
-        
         NSString *timeString = [class objectForKey:@"Время начала"];
-        [dateFormatter setDateFormat: @"hh:mm:ss"]; //07:40:00
-        [dateFormatter setLocale:[NSLocale currentLocale]];
+        [dateFormatter setDateFormat: @"HH:mm:ss"];
         NSDate *time = [dateFormatter dateFromString:timeString];
-//        if (time == nil) {
-//            [dateFormatter setDateFormat: @"h:mm:ss"]; //07:40:00
-//            time = [dateFormatter dateFromString:[class objectForKey:@"Время начала"]];
-//        }
-        
         NSDate *combinedDate = [self combineDate:date time:time];
         
+        NSMutableDictionary *convertedClass = [NSMutableDictionary dictionary];
+        [convertedClass setObject:[class objectForKey:@"Тема"] forKey:@"ClassName"];
         [convertedClass setObject:combinedDate forKey:@"ClassTime"];
         [convertedClasses addObject:convertedClass];
+        
+        // Add date of class to section keys
+        [sectionKeys addObject:date];
     }
-    [self setRows:convertedClasses];
+    
+    [dateFormatter release];
+    
+    // Remove duplicates
+    NSArray *sectionsKeysNoRepeats = [[NSSet setWithArray:sectionKeys] allObjects];
+    sectionKeys = [NSMutableArray arrayWithArray:sectionsKeysNoRepeats];
+    [sectionKeys sortUsingSelector:@selector(compare:)];
+    
+    // Create arrays for each section
+    for (NSDate *key in sectionKeys) {
+        [sections setObject:[NSMutableArray array] forKey:key];
+    }
+    
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    // Fill section's array with converted rows
+    for (NSDictionary *class in convertedClasses) {
+        NSDate *date = [class objectForKey:@"ClassTime"];
+        NSDateComponents *components = [gregorianCalendar components:
+                                                                NSYearCalendarUnit |
+                                                                NSMonthCalendarUnit |
+                                                                NSDayCalendarUnit
+                                                             fromDate:date];
+        date = [gregorianCalendar dateFromComponents:components];
+        [[sections objectForKey:date] addObject:class];
+    }
+    
+    [gregorianCalendar release];
+    
+    // Sort sections array by class time
+    NSMutableArray *keys = [NSMutableArray arrayWithArray:[sections allKeys]];
+    [keys sortUsingSelector:@selector(compare:)];
+    
+    for (NSDate *key in keys) {
+        NSMutableArray *sectionArray = [sections objectForKey:key];
+        [sectionArray sortUsingDescriptors:@[ [NSSortDescriptor sortDescriptorWithKey:@"ClassTime"
+                                                                     ascending:YES
+                                                                      selector:@selector(compare:)] ]];
+        [self.sections addObject:sectionArray];
+    }
+    
+    // Sort all rows array by class date
+    [convertedClasses sortUsingDescriptors:@[ [NSSortDescriptor sortDescriptorWithKey:@"ClassTime"
+                                                                            ascending:YES
+                                                                             selector:@selector(compare:)] ]];
 }
 
 - (NSDate *)combineDate:(NSDate *)date time:(NSDate *)time  {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    
+
     // Extract date components into components1
     NSDateComponents *components1 = [gregorianCalendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit
                                                          fromDate:date];
@@ -123,7 +167,8 @@
     
     // Generate a new NSDate from components3.
     NSDate *combinedDate = [gregorianCalendar dateFromComponents:components3];
-    
+    [components3 release];
+    [gregorianCalendar release];
     return combinedDate;
 }
 
@@ -149,7 +194,33 @@
 #pragma mark - UITableViewDataSource methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.rows.count;
+    return [[self.sections objectAtIndex:section] count];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.sections.count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self titleForSection:section];
+}
+
+- (NSString *)titleForSection:(NSUInteger)section {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd.MM"];
+    NSDictionary *row = [[self.sections objectAtIndex:section] objectAtIndex:0];
+    NSDate *date = [row objectForKey:@"ClassTime"];
+    NSString *title = [formatter stringFromDate:date];
+    [formatter release];
+    return title;
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    NSMutableArray *indexes = [NSMutableArray array];
+    for (int i = 0; i < self.sections.count; i++) {
+        [indexes addObject:[self titleForSection:i]];
+    }
+    return [NSArray arrayWithArray:indexes];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -158,15 +229,19 @@
     ScheduleCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (!cell) {
-        cell = [[ScheduleCell alloc] init];
+        cell = [[[ScheduleCell alloc] init] autorelease];
     }
     
-    NSDictionary *class = [self.rows objectAtIndex:indexPath.row];
+    NSDictionary *class = [[self.sections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
     cell.classNameLabel.text = [class objectForKey:@"ClassName"];
-    cell.classNumberLabel.text = [[class objectForKey:@"ClassTime"] description];
-    //cell.classTimeLabel.text = [class objectForKey:@"Время начала"];
     
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm"];
+    
+    cell.classNumberLabel.text = [formatter stringFromDate:[class objectForKey:@"ClassTime"]];
+    //cell.classTimeLabel.text = [class objectForKey:@"Время начала"];
+    [formatter release];
     return cell;
 }
 

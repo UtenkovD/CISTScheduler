@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ScheduleViewController.h"
+#import "PickViewController.h"
 
 @implementation AppDelegate
 
@@ -23,7 +24,11 @@
     // Override point for customization after application launch.
     
     ScheduleViewController *scheduleVC = [[ScheduleViewController alloc] init];
-    [scheduleVC setTitle:@"Schedule"];
+    [scheduleVC setTitle:@"КН-09-4"];
+    
+//    PickViewController *pickVC = [[PickViewController alloc] initWithNibName:nil bundle:nil];
+//    [pickVC setTitle:@"Scheduler"];
+    
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:scheduleVC];
 
     self.window.rootViewController = navController;
