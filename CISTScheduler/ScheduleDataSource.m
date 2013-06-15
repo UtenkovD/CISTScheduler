@@ -13,7 +13,8 @@
 
 @interface ScheduleDataSource () 
 
-@property (nonatomic, retain ) NSMutableArray *sections;
+@property (nonatomic, retain) NSMutableArray *sections;
+@property (nonatomic, retain) NSMutableDictionary *cellColors;
 
 @end
 
@@ -24,6 +25,7 @@
     [_sections release];
     [_startDate release];
     [_endDate release];
+    [_cellColors release];
     [super dealloc];
 }
 
@@ -39,6 +41,16 @@
         _startDate = startDate ? [startDate retain] : [[dateFormatter dateFromString:@"01.02.2013"] retain];
         _endDate = endDate ? [endDate retain] : [[dateFormatter dateFromString:@"30.06.2013"] retain];
         [dateFormatter release];
+        
+        _cellColors = [[NSMutableDictionary alloc] init];
+        [_cellColors setObject:[UIColor colorWithRed:254.0f/255.0f green:254.0f/255.0f blue:234.0f/255.0f alpha:1.0] forKey:@"Лк"];
+        [_cellColors setObject:[UIColor colorWithRed:218/255.0f green:233/255.0f blue:217/255.0f alpha:1.0] forKey:@"Пз"];
+        [_cellColors setObject:[UIColor colorWithRed:205/255.0f green:204/255.0f blue:255/255.0f alpha:1.0] forKey:@"Лб"];
+        [_cellColors setObject:[UIColor whiteColor] forKey:@"Конс"];
+        [_cellColors setObject:[UIColor colorWithRed:194/255.0f green:160/255.0f blue:184/255.0f alpha:1.0] forKey:@"Зал"];
+        [_cellColors setObject:[UIColor colorWithRed:143/255.0f green:254/211 blue:252/255.0f alpha:1.0] forKey:@"ЕкзУ"];
+        [_cellColors setObject:[UIColor colorWithRed:143/255.0f green:254/211 blue:252/255.0f alpha:1.0] forKey:@"ЕкзП"];
+        [_cellColors setObject:[UIColor colorWithRed:143/255.0f green:254/211 blue:252/255.0f alpha:1.0] forKey:@"мод"];
     }
     return self;
 }
@@ -326,11 +338,14 @@
     [formatter setDateFormat:@"HH:mm"];
     
     NSDictionary *class = [[self.sections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    
+    cell.classTimeLabel.text = [formatter stringFromDate:[class objectForKey:@"ClassTime"]];
+    cell.classTypeLabel.text = [class objectForKey:@"ClassType"];
     cell.classNameLabel.text = [class objectForKey:@"ClassName"];
     cell.classNumberLabel.text = [NSString stringWithFormat:@"ауд. %@", [class objectForKey:@"ClassAuditoryNumber"]];
-    cell.classTimeLabel.text = [formatter stringFromDate:[class objectForKey:@"ClassTime"]];
-    
+
+    UIColor *color = [self.cellColors objectForKey:[class objectForKey:@"ClassType"]];
+    [[cell backgroundView] setBackgroundColor:color];
+
     [formatter release];
     return cell;
 }

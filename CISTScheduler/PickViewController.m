@@ -165,6 +165,7 @@
     ScheduleViewController *scheduleVC = [[ScheduleViewController alloc] init];
     [scheduleVC setStartDate:startDate];
     [scheduleVC setEndDate:endDate];
+    [scheduleVC setTitle:@"КН-09-4"];
     [[self navigationController] pushViewController:scheduleVC animated:YES];
     [scheduleVC release];
 }

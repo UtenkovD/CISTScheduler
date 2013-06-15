@@ -10,8 +10,9 @@
 
 @interface ScheduleCell : UITableViewCell
 
-@property (retain, nonatomic) IBOutlet UILabel *classNameLabel;
 @property (retain, nonatomic) IBOutlet UILabel *classNumberLabel;
+@property (retain, nonatomic) IBOutlet UILabel *classTypeLabel;
+@property (retain, nonatomic) IBOutlet UILabel *classNameLabel;
 @property (retain, nonatomic) IBOutlet UILabel *classTimeLabel;
 
 @end
