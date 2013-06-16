@@ -27,6 +27,9 @@
 		FA7D2E70176DC2A1005C7636 /* Groups keys in Resources */ = {isa = PBXBuildFile; fileRef = FA7D2E6F176DC2A1005C7636 /* Groups keys */; };
 		FA88B4BD176DEB7C00070BCF /* FacultyPickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA88B4BB176DEB7C00070BCF /* FacultyPickViewController.m */; };
 		FA88B4BE176DEB7C00070BCF /* FacultyPickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA88B4BC176DEB7C00070BCF /* FacultyPickViewController.xib */; };
+		FA88B4C5176DF1F700070BCF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FA88B4C1176DF1F700070BCF /* MBProgressHUD.m */; };
+		FA88B4C9176DF2CF00070BCF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FA88B4C8176DF2CF00070BCF /* Reachability.m */; };
+		FA88B4CB176DF48F00070BCF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA88B4CA176DF48E00070BCF /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +63,11 @@
 		FA88B4BA176DEB7C00070BCF /* FacultyPickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacultyPickViewController.h; sourceTree = "<group>"; };
 		FA88B4BB176DEB7C00070BCF /* FacultyPickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacultyPickViewController.m; sourceTree = "<group>"; };
 		FA88B4BC176DEB7C00070BCF /* FacultyPickViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FacultyPickViewController.xib; sourceTree = "<group>"; };
+		FA88B4C0176DF1F700070BCF /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		FA88B4C1176DF1F700070BCF /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		FA88B4C7176DF2CF00070BCF /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		FA88B4C8176DF2CF00070BCF /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		FA88B4CA176DF48E00070BCF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA88B4CB176DF48F00070BCF /* SystemConfiguration.framework in Frameworks */,
 				C3E40201176A83B500332940 /* UIKit.framework in Frameworks */,
 				C3E40203176A83B500332940 /* Foundation.framework in Frameworks */,
 				C3E40205176A83B500332940 /* CoreGraphics.framework in Frameworks */,
@@ -93,6 +102,7 @@
 		C3E401F1176A83B500332940 = {
 			isa = PBXGroup;
 			children = (
+				FA88B4CA176DF48E00070BCF /* SystemConfiguration.framework */,
 				C3E40206176A83B500332940 /* CISTScheduler */,
 				C3E40207176A83B500332940 /* Supporting Files */,
 				C3E401FF176A83B500332940 /* Frameworks */,
@@ -121,6 +131,7 @@
 		C3E40206176A83B500332940 /* CISTScheduler */ = {
 			isa = PBXGroup;
 			children = (
+				FA88B4BF176DF1F700070BCF /* MBProgressHUD */,
 				C3E4020F176A83B500332940 /* AppDelegate.h */,
 				C3E40210176A83B500332940 /* AppDelegate.m */,
 				C301AA85176BE618009F0109 /* ScheduleViewController */,
@@ -159,6 +170,17 @@
 				C30050BF176D303600829C03 /* GroupPickerDataSource.m */,
 			);
 			name = "Group pick";
+			sourceTree = "<group>";
+		};
+		FA88B4BF176DF1F700070BCF /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				FA88B4C7176DF2CF00070BCF /* Reachability.h */,
+				FA88B4C8176DF2CF00070BCF /* Reachability.m */,
+				FA88B4C0176DF1F700070BCF /* MBProgressHUD.h */,
+				FA88B4C1176DF1F700070BCF /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +261,8 @@
 				C301AA89176BE647009F0109 /* GroupPickViewController.m in Sources */,
 				C30050C0176D303600829C03 /* GroupPickerDataSource.m in Sources */,
 				FA88B4BD176DEB7C00070BCF /* FacultyPickViewController.m in Sources */,
+				FA88B4C5176DF1F700070BCF /* MBProgressHUD.m in Sources */,
+				FA88B4C9176DF2CF00070BCF /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

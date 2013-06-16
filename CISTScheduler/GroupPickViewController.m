@@ -9,6 +9,8 @@
 #import "GroupPickViewController.h"
 #import "ScheduleViewController.h"
 #import "GroupPickerDataSource.h"
+#import "Reachability.h"
+#import "MBProgressHUD.h"
 
 @interface GroupPickViewController () <GroupPickerDataSourceDelegate>
 
@@ -215,13 +217,42 @@
         return;
     }
     
-    ScheduleViewController *scheduleVC = [[ScheduleViewController alloc] init];
-    [scheduleVC setStartDate:startDate];
-    [scheduleVC setEndDate:endDate];
-    [scheduleVC setGroupIndex:[self groupIndex]];
-    [scheduleVC setTitle:[self.groupButton titleForState:UIControlStateNormal]];
-    [[self navigationController] pushViewController:scheduleVC animated:YES];
-    [scheduleVC release];
+    NetworkReachable successBlock = ^(Reachability* reach) {
+        ScheduleViewController *scheduleVC = [[ScheduleViewController alloc] init];
+        [scheduleVC setStartDate:startDate];
+        [scheduleVC setEndDate:endDate];
+        [scheduleVC setGroupIndex:[self groupIndex]];
+        [scheduleVC setTitle:[self.groupButton titleForState:UIControlStateNormal]];
+        [[self navigationController] pushViewController:scheduleVC animated:YES];
+        [scheduleVC release];
+    };
+    
+    [[MBProgressHUD showHUDAddedTo:[self view] animated:YES] setLabelText:@"Please wait..."];
+    
+    [self performSelector:@selector(checkConnectionsStatus:) withObject:[successBlock copy] afterDelay:0.01];
+    
+    //[self checkConnectionsStatus:[successBlock copy]];
+    
+}
+
+- (void)checkConnectionsStatus:(NetworkReachable)successBlock {
+    // allocate a reachability object
+    Reachability* reach = [Reachability reachabilityWithHostname:@"cist.kture.kharkov.ua"];
+    
+    if ([reach isReachable]) {
+        [MBProgressHUD hideAllHUDsForView:[self view] animated:YES];
+        successBlock(reach);
+    } else {
+        [MBProgressHUD hideAllHUDsForView:[self view] animated:YES];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Conneciton error"
+                                                        message:@"CIST server are unreachable"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }
+    
 }
 
 - (void)viewDidUnload {
