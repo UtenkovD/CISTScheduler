@@ -23,6 +23,7 @@
 		C3E40217176A83B500332940 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E40216176A83B500332940 /* Default-568h@2x.png */; };
 		C3E4021F176A854100332940 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4021E176A854100332940 /* ScheduleViewController.m */; };
 		C3E40224176A8A2B00332940 /* ScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E40223176A8A2B00332940 /* ScheduleCell.m */; };
+		C3E59214176E0DE600255786 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E59213176E0DE600255786 /* icon@2x.png */; };
 		FA253D26176B342400FD2F9F /* ScheduleDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FA253D25176B342400FD2F9F /* ScheduleDataSource.m */; };
 		FA7D2E70176DC2A1005C7636 /* Groups keys in Resources */ = {isa = PBXBuildFile; fileRef = FA7D2E6F176DC2A1005C7636 /* Groups keys */; };
 		FA88B4BD176DEB7C00070BCF /* FacultyPickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA88B4BB176DEB7C00070BCF /* FacultyPickViewController.m */; };
@@ -40,7 +41,7 @@
 		C301AA88176BE647009F0109 /* GroupPickViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupPickViewController.xib; sourceTree = "<group>"; };
 		C36A8720176D1B6000EDA0EE /* KN-09-4.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "KN-09-4.csv"; sourceTree = "<group>"; };
 		C3E2AA41176A8BE9006296E2 /* ScheduleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleCell.xib; sourceTree = "<group>"; };
-		C3E401FC176A83B500332940 /* CISTScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CISTScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3E401FC176A83B500332940 /* CIST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CIST.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E40200176A83B500332940 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C3E40202176A83B500332940 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C3E40204176A83B500332940 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -57,6 +58,7 @@
 		C3E4021E176A854100332940 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
 		C3E40222176A8A2B00332940 /* ScheduleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCell.h; sourceTree = "<group>"; };
 		C3E40223176A8A2B00332940 /* ScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCell.m; sourceTree = "<group>"; };
+		C3E59213176E0DE600255786 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
 		FA253D24176B342400FD2F9F /* ScheduleDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleDataSource.h; sourceTree = "<group>"; };
 		FA253D25176B342400FD2F9F /* ScheduleDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleDataSource.m; sourceTree = "<group>"; };
 		FA7D2E6F176DC2A1005C7636 /* Groups keys */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Groups keys"; sourceTree = "<group>"; };
@@ -102,7 +104,6 @@
 		C3E401F1176A83B500332940 = {
 			isa = PBXGroup;
 			children = (
-				FA88B4CA176DF48E00070BCF /* SystemConfiguration.framework */,
 				C3E40206176A83B500332940 /* CISTScheduler */,
 				C3E40207176A83B500332940 /* Supporting Files */,
 				C3E401FF176A83B500332940 /* Frameworks */,
@@ -113,7 +114,7 @@
 		C3E401FD176A83B500332940 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C3E401FC176A83B500332940 /* CISTScheduler.app */,
+				C3E401FC176A83B500332940 /* CIST.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,6 +122,7 @@
 		C3E401FF176A83B500332940 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA88B4CA176DF48E00070BCF /* SystemConfiguration.framework */,
 				C3E40200176A83B500332940 /* UIKit.framework */,
 				C3E40202176A83B500332940 /* Foundation.framework */,
 				C3E40204176A83B500332940 /* CoreGraphics.framework */,
@@ -155,6 +157,7 @@
 				C3E40212176A83B500332940 /* Default.png */,
 				C3E40214176A83B500332940 /* Default@2x.png */,
 				C3E40216176A83B500332940 /* Default-568h@2x.png */,
+				C3E59213176E0DE600255786 /* icon@2x.png */,
 			);
 			name = "Supporting Files";
 			path = CISTScheduler;
@@ -200,7 +203,7 @@
 			);
 			name = CISTScheduler;
 			productName = CISTScheduler;
-			productReference = C3E401FC176A83B500332940 /* CISTScheduler.app */;
+			productReference = C3E401FC176A83B500332940 /* CIST.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -243,6 +246,7 @@
 				C36A8721176D1B6000EDA0EE /* KN-09-4.csv in Resources */,
 				FA7D2E70176DC2A1005C7636 /* Groups keys in Resources */,
 				FA88B4BE176DEB7C00070BCF /* FacultyPickViewController.xib in Resources */,
+				C3E59214176E0DE600255786 /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,7 +339,7 @@
 				GCC_PREFIX_HEADER = "CISTScheduler/CISTScheduler-Prefix.pch";
 				INFOPLIST_FILE = "CISTScheduler/CISTScheduler-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CIST;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -347,7 +351,7 @@
 				GCC_PREFIX_HEADER = "CISTScheduler/CISTScheduler-Prefix.pch";
 				INFOPLIST_FILE = "CISTScheduler/CISTScheduler-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CIST;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
