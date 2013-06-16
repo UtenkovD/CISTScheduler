@@ -29,12 +29,16 @@
 
 @interface GroupPickerDataSource ()
 
+@property (nonatomic, retain) NSMutableArray *groupNames;
+@property (nonatomic, retain) NSMutableDictionary *groupsIndexes;
+
 @end
 
 @implementation GroupPickerDataSource
 
 - (void)dealloc {
     [_groupsIndexes release];
+    [_groupNames release];
     _delegate = nil;
     [super dealloc];
 }
@@ -95,6 +99,11 @@
 ////                }
 //            }
         }
+        
+        _groupNames = [[NSMutableArray arrayWithArray:[_groupsIndexes allKeys]] retain];
+        [_groupNames sortUsingSelector:@selector(localizedCompare:)];
+        
+        
     }
     return self;
 }
@@ -110,16 +119,17 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return [[self groupsIndexes] count];
+    return [[self groupNames] count];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    NSString *group = [self pickerView:pickerView titleForRow:row forComponent:component];
+    NSString *group = [[self groupNames] objectAtIndex:row];
     [[self delegate] didGroupPicked:group];
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [[[self groupsIndexes] allKeys] objectAtIndex:row];
+    
+    return [[self groupNames] objectAtIndex:row];
 }
 
 @end
