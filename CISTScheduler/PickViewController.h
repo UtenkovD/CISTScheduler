@@ -10,7 +10,7 @@
 
 @interface PickViewController : UIViewController
 
-@property (nonatomic, copy) NSString *group;
+@property (nonatomic, copy)   NSString *groupIndex;
 @property (nonatomic, retain) NSDate *startDate;
 @property (nonatomic, retain) NSDate *endDate;
 

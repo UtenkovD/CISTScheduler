@@ -8,11 +8,14 @@
 
 #import "PickViewController.h"
 #import "ScheduleViewController.h"
+#import "GroupPickerDataSource.h"
 
-@interface PickViewController ()
+@interface PickViewController () <GroupPickerDataSourceDelegate>
 
 @property (nonatomic, retain) UIDatePicker *datePicker;
 @property (nonatomic, retain) NSDateFormatter *dateFormatter;
+@property (nonatomic, retain) UIPickerView *groupPicker;
+@property (nonatomic, retain) GroupPickerDataSource *groupPickerDataSource;
 
 @end
 
@@ -24,10 +27,11 @@
     [_endDate release];
     [_startDate release];
     [_endDate release];
-    [_group release];
+    [_groupIndex release];
     [_groupButton release];
     [_startDateButton release];
     [_endDateButton release];
+    [_groupPickerDataSource release];
     [super dealloc];
 }
 
@@ -38,11 +42,33 @@
         // Custom initialization
         _dateFormatter = [[NSDateFormatter alloc] init];
         [_dateFormatter setDateFormat:@"dd.MM.yyyy"];
+        _groupPickerDataSource = [[GroupPickerDataSource alloc] initWithFacultyKey:@"КН"];
+        [_groupPickerDataSource setDelegate:self];
     }
     return self;
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [self setStartDate:nil];
+    [self setEndDate:nil];
+    [self.startDateButton setTitle:@"Pick start date" forState:UIControlStateNormal];
+    [self.endDateButton setTitle:@"Pick end date" forState:UIControlStateNormal];
+
+}
+
 - (IBAction)groupPickButtonPressed:(id)sender {
+    UIPickerView *picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 416, 320, 216)];
+    picker.dataSource = self.groupPickerDataSource;
+    picker.delegate = self.groupPickerDataSource;
+    picker.showsSelectionIndicator = YES;
+    self.groupPicker = picker;
+    [picker release];
+    
+    [self addHideButton:@selector(hideGroupPicker:)];
+    [[self view] addSubview:self.groupPicker];
+    [UIView animateWithDuration:0.5 animations:^{
+        self.groupPicker.frame = CGRectMake(0, 480-280, 320, 216);
+    }];
 }
 
 - (IBAction)startDatePickButtonPressed:(id)sender {
@@ -58,7 +84,7 @@
     
     [[self view] addSubview:self.datePicker];
     [UIView animateWithDuration:0.5 animations:^{
-        self.datePicker.frame = CGRectMake(0, 480-280, 320, 218);
+        self.datePicker.frame = CGRectMake(0, 480-280, 320, 216);
     }];
 }
 
@@ -78,7 +104,7 @@
         CGRect viewFrame = self.view.frame;
         viewFrame.origin.y -= 150;
         self.view.frame = viewFrame;
-        self.datePicker.frame = CGRectMake(0, 350, 320, 218);
+        self.datePicker.frame = CGRectMake(0, 350, 320, 216);
     }];
 }
 
@@ -101,9 +127,17 @@
     [self hidePicker:sender];
 }
 
+- (void)hideGroupPicker:(id)sender {
+    NSInteger row = [self.groupPicker selectedRowInComponent:0];
+    [[self groupPickerDataSource] pickerView:self.groupPicker didSelectRow:row inComponent:0];
+    [self hidePicker:sender];
+}
+
+
 - (void)setStartDate {
     [self setStartDate:[[self datePicker] date]];
     NSString *dateString = [[self dateFormatter] stringFromDate:[self startDate]];
+    
     [[self startDateButton] setTitle:dateString forState:UIControlStateNormal];
 }
 
@@ -115,11 +149,13 @@
 
 - (void)hidePicker:(id)sender {
     [UIView animateWithDuration:0.5 animations:^{
-        self.datePicker.frame = CGRectMake(0, 416, 320, 218);
+        self.datePicker.frame = CGRectMake(0, 416, 320, 216);
+        self.groupPicker.frame = CGRectMake(0, 416, 320, 216);
         self.view.frame = CGRectMake(0, 0, 320, 480);
     }];
     [sender removeFromSuperview];
     [self setDatePicker:nil];
+    [self setGroupPicker:nil];
 }
 
 - (UIDatePicker *)createDatePicker {
@@ -130,7 +166,7 @@
     UIDatePicker *datePicker = [[UIDatePicker alloc] init];
     [datePicker setDatePickerMode:UIDatePickerModeDate];
     [datePicker setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"]];
-    [datePicker setFrame:CGRectMake(0, 416, 320, 218)];
+    [datePicker setFrame:CGRectMake(0, 416, 320, 216)];
     [datePicker setMinimumDate:self.startDate ? self.startDate : startDate];
     [datePicker setMaximumDate:self.endDate ? self.endDate : endDate];
     
@@ -162,10 +198,22 @@
         endDate = [[self dateFormatter] dateFromString:@"30.06.2013"];
     }
     
+    if (self.groupIndex == nil) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"Pick a group!"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+        return;
+    }
+    
     ScheduleViewController *scheduleVC = [[ScheduleViewController alloc] init];
     [scheduleVC setStartDate:startDate];
     [scheduleVC setEndDate:endDate];
-    [scheduleVC setTitle:@"КН-09-4"];
+    [scheduleVC setGroupIndex:[self groupIndex]];
+    [scheduleVC setTitle:[self.groupButton titleForState:UIControlStateNormal]];
     [[self navigationController] pushViewController:scheduleVC animated:YES];
     [scheduleVC release];
 }
@@ -176,6 +224,11 @@
     [self setEndDateButton:nil];
     [self setDatePicker:nil];
     [super viewDidUnload];
+}
+
+- (void)didGroupPicked:(NSString *)groupName {
+    [self.groupButton setTitle:groupName forState:UIControlStateNormal];
+    [self setGroupIndex:[[self groupPickerDataSource] indexForGroup:groupName]];
 }
 
 @end

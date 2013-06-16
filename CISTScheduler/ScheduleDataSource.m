@@ -11,7 +11,7 @@
 
 #define a_0 @"2664907"
 
-@interface ScheduleDataSource () 
+@interface ScheduleDataSource ()  <UIAlertViewDelegate>
 
 @property (nonatomic, retain) NSMutableArray *sections;
 @property (nonatomic, retain) NSMutableDictionary *cellColors;
@@ -27,6 +27,10 @@
     [_endDate release];
     [_cellColors release];
     [super dealloc];
+}
+
+- (BOOL)isEmpty {
+    return [self.sections count] == 0;
 }
 
 - (id)initWithGroupIndex:(NSString *)groupIndex
@@ -112,7 +116,7 @@
                                    startDate:[self startDate]
                                      endDate:[self endDate]];
     
-    if (!rows) {
+    if (!rows || rows.count == 0) {
         return;
     }
     NSMutableArray *convertedClasses = [NSMutableArray array];

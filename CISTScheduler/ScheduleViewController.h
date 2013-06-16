@@ -12,5 +12,6 @@
 
 @property (nonatomic, retain) NSDate *startDate;
 @property (nonatomic, retain) NSDate *endDate;
+@property (nonatomic, copy) NSString *groupIndex;
 
 @end
