@@ -242,6 +242,12 @@
 }
 
 - (NSArray *)parseSingleClass:(NSString *)theme {
+    if ([theme rangeOfString:@"_"].location != NSNotFound) {
+        NSMutableString *mutableTheme = [NSMutableString stringWithString:theme];
+        [mutableTheme replaceOccurrencesOfString:@"_" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, mutableTheme.length)];
+        [mutableTheme replaceOccurrencesOfString:@"  " withString:@" " options:NSCaseInsensitiveSearch range:NSMakeRange(0, mutableTheme.length)];
+        theme = [NSString stringWithString:mutableTheme];
+    }
     NSArray *themeParts = [theme componentsSeparatedByString:@" "];
     return @[
              @{
