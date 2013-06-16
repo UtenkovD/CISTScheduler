@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PickViewController : UIViewController
+@interface GroupPickViewController : UIViewController
 
 @property (nonatomic, copy)   NSString *groupIndex;
 @property (nonatomic, retain) NSDate *startDate;
@@ -17,6 +17,8 @@
 @property (retain, nonatomic) IBOutlet UIButton *groupButton;
 @property (retain, nonatomic) IBOutlet UIButton *startDateButton;
 @property (retain, nonatomic) IBOutlet UIButton *endDateButton;
+
+- (id)initWithFacultyKey:(NSString *)facultyKey;
 
 - (IBAction)groupPickButtonPressed:(id)sender;
 - (IBAction)startDatePickButtonPressed:(id)sender;

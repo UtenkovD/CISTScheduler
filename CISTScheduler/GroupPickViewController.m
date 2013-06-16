@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Coderivium. All rights reserved.
 //
 
-#import "PickViewController.h"
+#import "GroupPickViewController.h"
 #import "ScheduleViewController.h"
 #import "GroupPickerDataSource.h"
 
-@interface PickViewController () <GroupPickerDataSourceDelegate>
+@interface GroupPickViewController () <GroupPickerDataSourceDelegate>
 
 @property (nonatomic, retain) UIDatePicker *datePicker;
 @property (nonatomic, retain) NSDateFormatter *dateFormatter;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation PickViewController
+@implementation GroupPickViewController
 
 - (void)dealloc {
     [_datePicker release];
@@ -35,6 +35,14 @@
     [super dealloc];
 }
 
+- (id)initWithFacultyKey:(NSString *)facultyKey {
+    if (self = [self initWithNibName:nil bundle:nil]) {
+        _groupPickerDataSource = [[GroupPickerDataSource alloc] initWithFacultyKey:facultyKey];
+        [_groupPickerDataSource setDelegate:self];
+    }
+    return self;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -42,8 +50,6 @@
         // Custom initialization
         _dateFormatter = [[NSDateFormatter alloc] init];
         [_dateFormatter setDateFormat:@"dd.MM.yyyy"];
-        _groupPickerDataSource = [[GroupPickerDataSource alloc] initWithFacultyKey:@"КН"];
-        [_groupPickerDataSource setDelegate:self];
     }
     return self;
 }

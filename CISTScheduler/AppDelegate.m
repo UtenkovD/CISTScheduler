@@ -7,8 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "ScheduleViewController.h"
-#import "PickViewController.h"
+#import "FacultyPickViewController.h"
 
 @implementation AppDelegate
 
@@ -23,10 +22,7 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     
-//    ScheduleViewController *scheduleVC = [[ScheduleViewController alloc] init];
-//    [scheduleVC setTitle:@"КН-09-4"];
-    
-    PickViewController *pickVC = [[PickViewController alloc] initWithNibName:nil bundle:nil];
+    FacultyPickViewController *pickVC = [[FacultyPickViewController alloc] initWithStyle:UITableViewStylePlain];
     [pickVC setTitle:@"Scheduler"];
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:pickVC];

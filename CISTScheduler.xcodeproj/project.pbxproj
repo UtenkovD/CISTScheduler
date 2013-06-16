@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C30050C0176D303600829C03 /* GroupPickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C30050BF176D303600829C03 /* GroupPickerDataSource.m */; };
-		C301AA89176BE647009F0109 /* PickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C301AA87176BE647009F0109 /* PickViewController.m */; };
-		C301AA8A176BE647009F0109 /* PickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C301AA88176BE647009F0109 /* PickViewController.xib */; };
+		C301AA89176BE647009F0109 /* GroupPickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C301AA87176BE647009F0109 /* GroupPickViewController.m */; };
+		C301AA8A176BE647009F0109 /* GroupPickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C301AA88176BE647009F0109 /* GroupPickViewController.xib */; };
 		C36A8721176D1B6000EDA0EE /* KN-09-4.csv in Resources */ = {isa = PBXBuildFile; fileRef = C36A8720176D1B6000EDA0EE /* KN-09-4.csv */; };
 		C3E2AA42176A8BE9006296E2 /* ScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3E2AA41176A8BE9006296E2 /* ScheduleCell.xib */; };
 		C3E40201176A83B500332940 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E40200176A83B500332940 /* UIKit.framework */; };
@@ -25,14 +25,16 @@
 		C3E40224176A8A2B00332940 /* ScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E40223176A8A2B00332940 /* ScheduleCell.m */; };
 		FA253D26176B342400FD2F9F /* ScheduleDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FA253D25176B342400FD2F9F /* ScheduleDataSource.m */; };
 		FA7D2E70176DC2A1005C7636 /* Groups keys in Resources */ = {isa = PBXBuildFile; fileRef = FA7D2E6F176DC2A1005C7636 /* Groups keys */; };
+		FA88B4BD176DEB7C00070BCF /* FacultyPickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA88B4BB176DEB7C00070BCF /* FacultyPickViewController.m */; };
+		FA88B4BE176DEB7C00070BCF /* FacultyPickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA88B4BC176DEB7C00070BCF /* FacultyPickViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C30050BE176D303600829C03 /* GroupPickerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupPickerDataSource.h; sourceTree = "<group>"; };
 		C30050BF176D303600829C03 /* GroupPickerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupPickerDataSource.m; sourceTree = "<group>"; };
-		C301AA86176BE647009F0109 /* PickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickViewController.h; sourceTree = "<group>"; };
-		C301AA87176BE647009F0109 /* PickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickViewController.m; sourceTree = "<group>"; };
-		C301AA88176BE647009F0109 /* PickViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickViewController.xib; sourceTree = "<group>"; };
+		C301AA86176BE647009F0109 /* GroupPickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupPickViewController.h; sourceTree = "<group>"; };
+		C301AA87176BE647009F0109 /* GroupPickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupPickViewController.m; sourceTree = "<group>"; };
+		C301AA88176BE647009F0109 /* GroupPickViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupPickViewController.xib; sourceTree = "<group>"; };
 		C36A8720176D1B6000EDA0EE /* KN-09-4.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "KN-09-4.csv"; sourceTree = "<group>"; };
 		C3E2AA41176A8BE9006296E2 /* ScheduleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleCell.xib; sourceTree = "<group>"; };
 		C3E401FC176A83B500332940 /* CISTScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CISTScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +57,9 @@
 		FA253D24176B342400FD2F9F /* ScheduleDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleDataSource.h; sourceTree = "<group>"; };
 		FA253D25176B342400FD2F9F /* ScheduleDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleDataSource.m; sourceTree = "<group>"; };
 		FA7D2E6F176DC2A1005C7636 /* Groups keys */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Groups keys"; sourceTree = "<group>"; };
+		FA88B4BA176DEB7C00070BCF /* FacultyPickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacultyPickViewController.h; sourceTree = "<group>"; };
+		FA88B4BB176DEB7C00070BCF /* FacultyPickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacultyPickViewController.m; sourceTree = "<group>"; };
+		FA88B4BC176DEB7C00070BCF /* FacultyPickViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FacultyPickViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,11 +124,10 @@
 				C3E4020F176A83B500332940 /* AppDelegate.h */,
 				C3E40210176A83B500332940 /* AppDelegate.m */,
 				C301AA85176BE618009F0109 /* ScheduleViewController */,
-				C301AA86176BE647009F0109 /* PickViewController.h */,
-				C301AA87176BE647009F0109 /* PickViewController.m */,
-				C301AA88176BE647009F0109 /* PickViewController.xib */,
-				C30050BE176D303600829C03 /* GroupPickerDataSource.h */,
-				C30050BF176D303600829C03 /* GroupPickerDataSource.m */,
+				FA88B4B4176DEAD800070BCF /* Group pick */,
+				FA88B4BA176DEB7C00070BCF /* FacultyPickViewController.h */,
+				FA88B4BB176DEB7C00070BCF /* FacultyPickViewController.m */,
+				FA88B4BC176DEB7C00070BCF /* FacultyPickViewController.xib */,
 			);
 			path = CISTScheduler;
 			sourceTree = "<group>";
@@ -143,6 +147,18 @@
 			);
 			name = "Supporting Files";
 			path = CISTScheduler;
+			sourceTree = "<group>";
+		};
+		FA88B4B4176DEAD800070BCF /* Group pick */ = {
+			isa = PBXGroup;
+			children = (
+				C301AA86176BE647009F0109 /* GroupPickViewController.h */,
+				C301AA87176BE647009F0109 /* GroupPickViewController.m */,
+				C301AA88176BE647009F0109 /* GroupPickViewController.xib */,
+				C30050BE176D303600829C03 /* GroupPickerDataSource.h */,
+				C30050BF176D303600829C03 /* GroupPickerDataSource.m */,
+			);
+			name = "Group pick";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,9 +217,10 @@
 				C3E40215176A83B500332940 /* Default@2x.png in Resources */,
 				C3E40217176A83B500332940 /* Default-568h@2x.png in Resources */,
 				C3E2AA42176A8BE9006296E2 /* ScheduleCell.xib in Resources */,
-				C301AA8A176BE647009F0109 /* PickViewController.xib in Resources */,
+				C301AA8A176BE647009F0109 /* GroupPickViewController.xib in Resources */,
 				C36A8721176D1B6000EDA0EE /* KN-09-4.csv in Resources */,
 				FA7D2E70176DC2A1005C7636 /* Groups keys in Resources */,
+				FA88B4BE176DEB7C00070BCF /* FacultyPickViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,8 +236,9 @@
 				C3E4021F176A854100332940 /* ScheduleViewController.m in Sources */,
 				C3E40224176A8A2B00332940 /* ScheduleCell.m in Sources */,
 				FA253D26176B342400FD2F9F /* ScheduleDataSource.m in Sources */,
-				C301AA89176BE647009F0109 /* PickViewController.m in Sources */,
+				C301AA89176BE647009F0109 /* GroupPickViewController.m in Sources */,
 				C30050C0176D303600829C03 /* GroupPickerDataSource.m in Sources */,
+				FA88B4BD176DEB7C00070BCF /* FacultyPickViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
